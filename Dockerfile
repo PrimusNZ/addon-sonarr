@@ -14,8 +14,8 @@ RUN curl -J -L -o /tmp/bashio.tar.gz \
     && rm -fr /tmp/* 
 
 # use /data instead of /config for hass.io environment
-RUN sed -i "s|/config|/config/sonarr|g" /etc/services.d/sonarr/run \
-    && sed -i "s|/config|/config/sonarr|g" /etc/cont-init.d/30-config
+RUN sed -i "s|/config|/config/sonarr|g" /etc/s6-overlay/s6-rc.d/init-sonarr-config/run \
+    && sed -i "s|/config|/config/sonarr|g" /etc/s6-overlay/s6-rc.d/svc-sonarr/run
 
 # copy local files
 COPY root/ /
